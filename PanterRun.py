@@ -3,7 +3,7 @@ from time import sleep
 from os import system
 from sms import SendSms
 import threading
-
+import urllib3
 servisler_sms = []
 for attribute in dir(SendSms):
     attribute_value = getattr(SendSms, attribute)
@@ -11,6 +11,7 @@ for attribute in dir(SendSms):
         if attribute.startswith('__') == False:
             servisler_sms.append(attribute)
 
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
             
 while 1:
     system("cls||clear")
@@ -23,7 +24,7 @@ while 1:
  ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
     
     Sms: {}           {}by {}Panter\n  
-    """.format(Fore.LIGHTCYAN_EX, len(servisler_sms), Style.RESET_ALL, Fore.LIGHTRED_EX))
+    """.format(Fore.YELLOW, len(servisler_sms), Style.RESET_ALL, Fore.LIGHTRED_EX))
     try:
         menu = (input(Fore.GREEN + " 1- SMS Gönder (Normal)\n\n 2- SMS Gönder (Turbo)\n\n 3- Çıkış\n\n" + Fore.LIGHTYELLOW_EX + " Seçim: "))
         if menu == "":
